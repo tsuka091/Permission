@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.permission">
 
-    <uses-permission android:name="${permission_LOCATION}"/>
-    <uses-permission android:name="${permission_INTERNET}"/>
+    <uses-permission android:name="${permissions}"/>
+<!--    <uses-permission android:name="android.permission.INTERNET"/>-->
 
     <application
         android:allowBackup="true"

@@ -13,8 +13,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        manifestPlaceholders = [permission_LOCATION: project.property("permission_LOCATION"), permission_INTERNET: project.property("permission_INTERNET")]
+        //設定ファイルが参照したいときは「manifestPlaceholders」にいれる
+        //と書いてあったが一向にアクセスできてる感がない
+//        manifestPlaceholders = [permissions:${project.property("permission_LOCATION")}]
+        //こっちはうまくいく
+        manifestPlaceholders = [permissions:"android.permission.ACCESS_FINE_LOCATION"]
+        //つまりproject.propertyのアクセスで何か問題があるっぽい
+        //ソースコードから参照したいときは「buildConfigField」にいれる
+        // ここに書くとBuildConfig.javaに出力される(うまくいってる)
+        buildConfigField 'String[]', 'permissions', project.property("permissions")
     }
 
     buildTypes {
